@@ -38,12 +38,27 @@ skill/SKILL.md                         ← the canon (edit here only)
 
 ## Install
 
-One command auto-detects your installed IDEs and installs to the right places:
+Clone this repo, then run the installer — it auto-detects your installed IDEs and
+installs to the right places.
+
+**macOS / Linux:**
 
 ```bash
+git clone https://github.com/newmindsgroup/prompt-engineering-expert.git
+cd prompt-engineering-expert
 ./install.sh                     # Claude Code, Codex, Gemini/Antigravity (user-global)
 ./install.sh --cursor /path/to/project   # also drop the Cursor rule into a project
 ./install.sh --dry-run           # preview, change nothing
+```
+
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/newmindsgroup/prompt-engineering-expert.git
+cd prompt-engineering-expert
+./install.ps1                    # Claude Code, Codex, Gemini/Antigravity (user-global)
+./install.ps1 -Cursor C:\path\to\project   # also drop the Cursor rule into a project
+./install.ps1 -DryRun            # preview, change nothing
 ```
 
 What it installs:
@@ -97,7 +112,7 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 | `cursor/` | Generated `.cursor/rules` rule. |
 | `antigravity/` | Generated instruction file for Antigravity / Gemini CLI. |
 | `scripts/sync-renders.sh` | Regenerates all renders from the canon. |
-| `install.sh` | Cross-IDE installer. |
+| `install.sh` / `install.ps1` | Cross-IDE installer (macOS/Linux / Windows). |
 
 ## License
 
