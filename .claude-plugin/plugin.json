@@ -1,0 +1,8 @@
+{
+  "name": "prompt-engineering-expert",
+  "description": "Prompt Engineering Expert — design, improve, convert, debug, and operationalize prompts, system prompts, and agent instructions. Autonomous-first with an on-request interactive mode. Ships an auto-triggering skill, a sub-agent, and the /prompt-engineering-expert and /pe commands.",
+  "version": "1.0.0",
+  "author": { "name": "New Minds Group", "url": "https://github.com/newmindsgroup" },
+  "homepage": "https://github.com/newmindsgroup/prompt-engineering-expert",
+  "license": "MIT"
+}

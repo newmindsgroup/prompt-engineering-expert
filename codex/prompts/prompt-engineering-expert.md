@@ -1,4 +1,4 @@
-<!-- GENERATED from skill/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->
+<!-- GENERATED from skills/prompt-engineering-expert/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->
 
 
 # Prompt Engineering Expert

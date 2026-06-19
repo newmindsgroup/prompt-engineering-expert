@@ -13,8 +13,9 @@ guided **one-question-at-a-time interactive mode** whenever you ask for it.
 
 ## How it works — one brain, many adapters
 
-The entire methodology lives in **one** file: [`skill/SKILL.md`](skill/SKILL.md)
-(plus [`skill/references/`](skill/references)). That file is an
+The entire methodology lives in **one** file:
+[`skills/prompt-engineering-expert/SKILL.md`](skills/prompt-engineering-expert/SKILL.md)
+(plus [`references/`](skills/prompt-engineering-expert/references)). That file is an
 [Agent Skill](https://agentskills.io), the portable unit every modern AI IDE can
 load directly.
 
@@ -24,19 +25,33 @@ adapters are **generated** from the canon by
 single-source and never drifts.
 
 ```
-skill/SKILL.md                         ← the canon (edit here only)
-├── claude-code/  agent + slash command
+skills/prompt-engineering-expert/SKILL.md   ← the canon (edit here only)
+├── claude-code/  agent + slash commands (/prompt-engineering-expert, /pe)
 ├── codex/        ~/.codex/prompts slash command
 ├── cursor/       .cursor/rules/*.mdc  (generated)
-└── antigravity/  instruction file     (generated)
+├── antigravity/  instruction file     (generated)
+└── .claude-plugin/  plugin + marketplace manifests (native /plugin install)
 ```
 
-> Edit `skill/SKILL.md`, then run `./scripts/sync-renders.sh` to regenerate the
-> Cursor / Codex / Antigravity renders. Never hand-edit the generated files.
+> Edit `skills/prompt-engineering-expert/SKILL.md`, then run
+> `./scripts/sync-renders.sh` to regenerate the Cursor / Codex / Antigravity
+> renders. Never hand-edit the generated files.
 
 ---
 
 ## Install
+
+### Claude Code plugin (one command, no clone)
+
+```
+/plugin marketplace add newmindsgroup/prompt-engineering-expert
+/plugin install prompt-engineering-expert@prompt-engineering-expert
+```
+
+This installs the skill, the sub-agent, and the `/prompt-engineering-expert` + `/pe`
+commands in Claude Code. Restart the session afterward.
+
+### Cross-IDE installer (Claude Code, Codex, Cursor, Antigravity)
 
 Clone this repo, then run the installer — it auto-detects your installed IDEs and
 installs to the right places.
@@ -78,7 +93,7 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 
 - **Automatically** — it triggers whenever you're writing or improving a prompt,
   system prompt, agent instructions, `AGENTS.md`/`CLAUDE.md`, or an IDE rule.
-- **On demand** — `/prompt-engineering-expert <your goal>` (Claude Code, Codex).
+- **On demand** — `/prompt-engineering-expert <your goal>` or the short `/pe <your goal>` (Claude Code, Codex).
 - **Interactive** — say *"take me through it step by step"* for the guided loop.
 - **In Cursor** — the rule is agent-attached; Cursor applies it when your request
   matches the rule description, or `@`-mention it.
@@ -97,7 +112,7 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 - **Conversion** between Claude / Cursor / Codex / custom-GPT / plain system-prompt
   formats, preserving intent.
 - **Current, cross-vendor model guide** — see
-  [`skill/references/model-guide.md`](skill/references/model-guide.md).
+  [`skills/prompt-engineering-expert/references/model-guide.md`](skills/prompt-engineering-expert/references/model-guide.md).
 - **Safety + privacy** — masks secrets, refuses-and-redirects unsafe requests.
 
 ---
@@ -106,11 +121,12 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 
 | Path | What |
 |------|------|
-| `skill/` | The canonical Agent Skill — the single source of truth. |
-| `claude-code/` | Claude Code agent + slash command. |
-| `codex/` | Codex on-demand prompt (`/prompt-engineering-expert`). |
+| `skills/prompt-engineering-expert/` | The canonical Agent Skill — the single source of truth. |
+| `claude-code/` | Claude Code sub-agent + slash commands (`/prompt-engineering-expert`, `/pe`). |
+| `codex/` | Codex on-demand prompt. |
 | `cursor/` | Generated `.cursor/rules` rule. |
 | `antigravity/` | Generated instruction file for Antigravity / Gemini CLI. |
+| `.claude-plugin/` | Plugin + marketplace manifests for native `/plugin install`. |
 | `scripts/sync-renders.sh` | Regenerates all renders from the canon. |
 | `install.sh` / `install.ps1` | Cross-IDE installer (macOS/Linux / Windows). |
 

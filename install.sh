@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install prompt-engineering-expert across whatever AI IDEs/CLIs are present.
 #
-# The portable Agent Skill (skill/SKILL.md) is the unit of capability and is
+# The portable Agent Skill (skills/prompt-engineering-expert/SKILL.md) is the unit of capability and is
 # installed into every detected skills directory. Native on-demand adapters
 # (Claude agent + command, Codex prompt) are installed where they apply.
 #
@@ -29,9 +29,9 @@ run(){ if [[ "$DRY" == 1 ]]; then say "  (dry-run) $*"; else eval "$*"; fi; }
 install_skill_to(){ # $1 = skills dir
   local dir="$1"
   run "mkdir -p '$dir/$NAME/references'"
-  run "cp '$ROOT/skill/SKILL.md' '$dir/$NAME/SKILL.md'"
-  run "cp '$ROOT/skill/references/blueprint.md' '$dir/$NAME/references/blueprint.md'"
-  run "cp '$ROOT/skill/references/model-guide.md' '$dir/$NAME/references/model-guide.md'"
+  run "cp '$ROOT/skills/$NAME/SKILL.md' '$dir/$NAME/SKILL.md'"
+  run "cp '$ROOT/skills/$NAME/references/blueprint.md' '$dir/$NAME/references/blueprint.md'"
+  run "cp '$ROOT/skills/$NAME/references/model-guide.md' '$dir/$NAME/references/model-guide.md'"
   say "  ✓ skill → $dir/$NAME/"
 }
 
@@ -43,8 +43,8 @@ if command -v claude >/dev/null 2>&1 || [[ -d "$HOME/.claude" ]]; then
   install_skill_to "$HOME/.claude/skills"
   run "mkdir -p '$HOME/.claude/agents' '$HOME/.claude/commands'"
   run "cp '$ROOT/claude-code/agents/$NAME.md' '$HOME/.claude/agents/$NAME.md'"
-  run "cp '$ROOT/claude-code/commands/$NAME.md' '$HOME/.claude/commands/$NAME.md'"
-  say "  ✓ agent → ~/.claude/agents/$NAME.md   ✓ command → ~/.claude/commands/$NAME.md"
+  run "cp '$ROOT'/claude-code/commands/*.md '$HOME/.claude/commands/'"
+  say "  ✓ agent → ~/.claude/agents/$NAME.md   ✓ commands → ~/.claude/commands/ (/$NAME, /pe)"
 fi
 
 # --- Codex ---

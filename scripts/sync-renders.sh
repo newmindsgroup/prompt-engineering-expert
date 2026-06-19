@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Regenerate every per-IDE render from the canonical skill/SKILL.md.
-# The methodology lives in ONE place (skill/SKILL.md); the Cursor, Codex, and
+# Regenerate every per-IDE render from the canonical skills/prompt-engineering-expert/SKILL.md.
+# The methodology lives in ONE place (skills/prompt-engineering-expert/SKILL.md); the Cursor, Codex, and
 # Antigravity files below are generated artifacts — never hand-edit them.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-SKILL="skill/SKILL.md"
+SKILL="skills/prompt-engineering-expert/SKILL.md"
 [[ -f "$SKILL" ]] || { echo "[err] $SKILL not found" >&2; exit 1; }
 
 # Body = everything after the YAML frontmatter block.
@@ -20,13 +20,13 @@ DESC="Designs, improves, converts, debugs, and operationalizes prompts, system p
   printf 'globs:\n'
   printf 'alwaysApply: false\n'
   printf -- '---\n\n'
-  printf '<!-- GENERATED from skill/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->\n\n'
+  printf '<!-- GENERATED from skills/prompt-engineering-expert/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->\n\n'
   printf '%s\n' "$BODY"
 } > cursor/prompt-engineering-expert.mdc
 
 # --- Codex: ~/.codex/prompts/<name>.md (on-demand slash command) ---
 {
-  printf '<!-- GENERATED from skill/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->\n\n'
+  printf '<!-- GENERATED from skills/prompt-engineering-expert/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->\n\n'
   printf '%s\n' "$BODY"
   printf '\n---\n\nApply the methodology above to the user request below.\n'
   printf 'Default to Autonomous mode; use Interactive mode only if asked.\n\n'
@@ -35,11 +35,11 @@ DESC="Designs, improves, converts, debugs, and operationalizes prompts, system p
 
 # --- Antigravity / Gemini CLI: plain instruction file the agent reads ---
 {
-  printf '<!-- GENERATED from skill/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->\n\n'
+  printf '<!-- GENERATED from skills/prompt-engineering-expert/SKILL.md by scripts/sync-renders.sh — do not edit by hand. -->\n\n'
   printf '%s\n' "$BODY"
 } > antigravity/prompt-engineering-expert.md
 
 echo "[ ok ] Regenerated: cursor/prompt-engineering-expert.mdc"
 echo "[ ok ] Regenerated: codex/prompts/prompt-engineering-expert.md"
 echo "[ ok ] Regenerated: antigravity/prompt-engineering-expert.md"
-echo "       Canon: skill/SKILL.md (edit there, then re-run this script)."
+echo "       Canon: skills/prompt-engineering-expert/SKILL.md (edit there, then re-run this script)."

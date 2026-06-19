@@ -1,6 +1,6 @@
 # Install prompt-engineering-expert across whatever AI IDEs/CLIs are present (Windows / PowerShell).
 #
-# The portable Agent Skill (skill/SKILL.md) is the unit of capability and is installed
+# The portable Agent Skill (skills/prompt-engineering-expert/SKILL.md) is the unit of capability and is installed
 # into every detected skills directory. Native on-demand adapters (Claude agent +
 # command, Codex prompt) are installed where they apply.
 #
@@ -24,9 +24,9 @@ function Copy-It($src, $dst) { if ($DryRun) { Say "  (dry-run) copy $src -> $dst
 
 function Install-Skill($skillsDir) {
   Ensure-Dir (Join-Path $skillsDir "$Name\references")
-  Copy-It (Join-Path $Root "skill\SKILL.md") (Join-Path $skillsDir "$Name\SKILL.md")
-  Copy-It (Join-Path $Root "skill\references\blueprint.md") (Join-Path $skillsDir "$Name\references\blueprint.md")
-  Copy-It (Join-Path $Root "skill\references\model-guide.md") (Join-Path $skillsDir "$Name\references\model-guide.md")
+  Copy-It (Join-Path $Root "skills\$Name\SKILL.md") (Join-Path $skillsDir "$Name\SKILL.md")
+  Copy-It (Join-Path $Root "skills\$Name\references\blueprint.md") (Join-Path $skillsDir "$Name\references\blueprint.md")
+  Copy-It (Join-Path $Root "skills\$Name\references\model-guide.md") (Join-Path $skillsDir "$Name\references\model-guide.md")
   Say "  [ok] skill -> $skillsDir\$Name\"
 }
 
@@ -39,8 +39,9 @@ if ((Get-Command claude -ErrorAction SilentlyContinue) -or (Test-Path "$HOME\.cl
   Install-Skill "$HOME\.claude\skills"
   Ensure-Dir "$HOME\.claude\agents"; Ensure-Dir "$HOME\.claude\commands"
   Copy-It (Join-Path $Root "claude-code\agents\$Name.md") "$HOME\.claude\agents\$Name.md"
-  Copy-It (Join-Path $Root "claude-code\commands\$Name.md") "$HOME\.claude\commands\$Name.md"
-  Say "  [ok] agent + /$Name command"
+  if ($DryRun) { Say "  (dry-run) copy claude-code\commands\*.md -> ~\.claude\commands\" }
+  else { Copy-Item -Force -Path (Join-Path $Root "claude-code\commands\*.md") -Destination "$HOME\.claude\commands\" }
+  Say "  [ok] agent + commands (/$Name, /pe)"
 }
 
 # --- Codex ---
