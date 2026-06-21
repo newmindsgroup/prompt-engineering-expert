@@ -52,8 +52,8 @@ if command -v codex >/dev/null 2>&1 || [[ -d "$HOME/.codex" ]]; then
   say "• Codex detected"
   install_skill_to "$HOME/.codex/skills"
   run "mkdir -p '$HOME/.codex/prompts'"
-  run "cp '$ROOT/codex/prompts/$NAME.md' '$HOME/.codex/prompts/$NAME.md'"
-  say "  ✓ prompt → ~/.codex/prompts/$NAME.md (use /$NAME)"
+  run "cp '$ROOT'/codex/prompts/*.md '$HOME/.codex/prompts/'"
+  say "  ✓ prompts → ~/.codex/prompts/ (use /$NAME or /pe)"
 fi
 
 # --- Cross-runtime skills dir (Gemini CLI, Antigravity, Copilot CLI) ---

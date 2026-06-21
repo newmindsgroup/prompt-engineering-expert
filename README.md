@@ -81,7 +81,7 @@ What it installs:
 | IDE | Skill (auto-trigger) | On-demand adapter |
 |-----|----------------------|-------------------|
 | **Claude Code** | `~/.claude/skills/prompt-engineering-expert/` | agent + `/prompt-engineering-expert` |
-| **Codex** | `~/.codex/skills/…` | `~/.codex/prompts/prompt-engineering-expert.md` → `/prompt-engineering-expert` |
+| **Codex** | `~/.codex/skills/…` | `~/.codex/prompts/` → `/prompt-engineering-expert` + `/pe` |
 | **Antigravity / Gemini CLI** | `~/.agents/skills/…` (cross-runtime) | reads the skill at session start |
 | **Cursor** | — | `.cursor/rules/prompt-engineering-expert.mdc` (per-project) |
 
@@ -123,7 +123,7 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 |------|------|
 | `skills/prompt-engineering-expert/` | The canonical Agent Skill — the single source of truth. |
 | `claude-code/` | Claude Code sub-agent + slash commands (`/prompt-engineering-expert`, `/pe`). |
-| `codex/` | Codex on-demand prompt. |
+| `codex/` | Codex on-demand prompts (`/prompt-engineering-expert`, `/pe`). |
 | `cursor/` | Generated `.cursor/rules` rule. |
 | `antigravity/` | Generated instruction file for Antigravity / Gemini CLI. |
 | `.claude-plugin/` | Plugin + marketplace manifests for native `/plugin install`. |
