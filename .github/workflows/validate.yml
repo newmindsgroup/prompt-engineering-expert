@@ -1,0 +1,55 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SKILL.md frontmatter
+        run: |
+          F=skills/prompt-engineering-expert/SKILL.md
+          head -1 "$F" | grep -q '^---$' || { echo "no frontmatter"; exit 1; }
+          grep -q '^name: prompt-engineering-expert$' "$F" || { echo "bad name"; exit 1; }
+          grep -qE '^description: ' "$F" || { echo "missing description"; exit 1; }
+          echo "frontmatter ok"
+
+      - name: JSON manifests valid
+        run: |
+          python3 -c "import json; json.load(open('.claude-plugin/plugin.json')); json.load(open('.claude-plugin/marketplace.json')); print('json ok')"
+
+      - name: Plugin component paths resolve
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          m = json.load(open('.claude-plugin/marketplace.json'))
+          missing = []
+          for p in m.get('plugins', []):
+              for k in ('skills', 'agents', 'commands'):
+                  v = p.get(k, [])
+                  for path in ([v] if isinstance(v, str) else v):
+                      rp = path.lstrip('./')
+                      if not os.path.exists(rp):
+                          missing.append(f"{k}: {path}")
+          if missing:
+              print("MISSING:", *missing, sep="\n"); sys.exit(1)
+          print("all plugin paths resolve")
+          PY
+
+      - name: Renders not drifted
+        run: |
+          bash scripts/sync-renders.sh
+          git diff --exit-code -- cursor codex antigravity \
+            || { echo "Renders out of sync — run scripts/sync-renders.sh and commit."; exit 1; }
+
+      - name: Originality sweep
+        run: |
+          if grep -rniE "wizard|chatgpt|original gpt|gpt-5|\bo3\b" \
+               skills cursor codex antigravity .claude-plugin README.md; then
+            echo "Origin/stale reference found"; exit 1
+          fi
+          echo "originality clean"
