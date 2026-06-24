@@ -104,8 +104,14 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 
 - **Prompt Blueprint** — every prompt is structured against six sections:
   Role/Persona · Objective/OKR · Context · Requirements · Desired Output · Evaluation.
-- **Self-assessment** before drafting — infers target platform, model, audience,
-  and stakes from your project so it asks the fewest questions possible.
+- **Self-assessment + Gap scan** before drafting — scores the request against 8
+  dimensions and asks targeted qualifying questions (concrete options + a
+  recommended default) only when a real gap would change the output; otherwise
+  proceeds and states its assumptions.
+- **Self-grading** — scores each draft 1–5 (clarity, specificity, testability,
+  token-efficiency, safety) and auto-revises weak spots before presenting.
+- **Template + anti-pattern library** — starts from proven archetypes and scans
+  drafts for common "prompt smells" (see `skills/prompt-engineering-expert/references/`).
 - **Output pattern** — tightened draft in a code block, short rationale, a
   `▸revisions` line, a model recommendation, and token-budget warnings.
 - **Token awareness + chaining** for long / multi-document prompts.
