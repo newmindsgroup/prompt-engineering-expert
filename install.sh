@@ -28,10 +28,12 @@ run(){ if [[ "$DRY" == 1 ]]; then say "  (dry-run) $*"; else eval "$*"; fi; }
 
 install_skill_to(){ # $1 = skills dir
   local dir="$1"
-  run "mkdir -p '$dir/$NAME/references'"
+  run "mkdir -p '$dir/$NAME'"
   run "cp '$ROOT/skills/$NAME/SKILL.md' '$dir/$NAME/SKILL.md'"
-  run "cp '$ROOT/skills/$NAME/references/blueprint.md' '$dir/$NAME/references/blueprint.md'"
-  run "cp '$ROOT/skills/$NAME/references/model-guide.md' '$dir/$NAME/references/model-guide.md'"
+  # Copy the entire references tree so new files (templates, checklists, etc.)
+  # are always included — never hardcode individual reference filenames.
+  run "rm -rf '$dir/$NAME/references'"
+  run "cp -R '$ROOT/skills/$NAME/references' '$dir/$NAME/references'"
   say "  ✓ skill → $dir/$NAME/"
 }
 

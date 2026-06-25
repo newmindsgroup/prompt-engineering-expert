@@ -46,6 +46,15 @@ jobs:
           git diff --exit-code -- cursor codex antigravity \
             || { echo "Renders out of sync — run scripts/sync-renders.sh and commit."; exit 1; }
 
+      - name: SKILL.md reference pointers resolve
+        run: |
+          S=skills/prompt-engineering-expert
+          miss=0
+          for ref in $(grep -oE 'references/[A-Za-z0-9/_-]+\.md' "$S/SKILL.md" | sort -u); do
+            if [ ! -f "$S/$ref" ]; then echo "DANGLING: $ref"; miss=1; fi
+          done
+          [ "$miss" = 0 ] && echo "all SKILL.md reference pointers resolve" || exit 1
+
       - name: Originality sweep
         run: |
           if grep -rniE "wizard|chatgpt|original gpt|gpt-5|\bo3\b" \
