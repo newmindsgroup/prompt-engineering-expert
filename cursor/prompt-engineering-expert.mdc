@@ -123,7 +123,8 @@ synthesis — with rough per-step token budgets.
 
 Convert prompts between formats while preserving intent and adapting (not copying)
 platform specifics: Claude Code agent ↔ Cursor rule ↔ Codex/`AGENTS.md` ↔ custom
-GPT instructions ↔ plain system prompt.
+GPT instructions ↔ plain system prompt. For the exact fields and file conventions
+each target requires, follow `references/conversion-checklists.md`.
 
 ## Examples and references
 

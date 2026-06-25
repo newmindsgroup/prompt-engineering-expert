@@ -3,7 +3,7 @@
   "name": "prompt-engineering-expert",
   "displayName": "Prompt Engineering Expert",
   "description": "Portable, cross-IDE prompt-engineering capability. One canonical Agent Skill plus a sub-agent and slash commands for Claude Code; renders for Cursor, Codex, and Antigravity ship in the repo.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": { "name": "New Minds Group", "url": "https://github.com/newmindsgroup" },
   "license": "MIT",
   "repository": "https://github.com/newmindsgroup/prompt-engineering-expert",

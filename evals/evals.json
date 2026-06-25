@@ -1,0 +1,60 @@
+{
+  "skill_name": "prompt-engineering-expert",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a prompt that extracts action items from a meeting transcript.",
+      "expected_output": "A blueprinted prompt (Role/Objective/Context/Requirements/Desired Output/Evaluation). Shows a one-line Gap scan, proceeds WITHOUT asking questions (only 🟡 assumables), and ends with a quality scorecard.",
+      "files": [],
+      "assertions": [
+        { "text": "Output contains a 'Gap scan' line", "passed": null, "evidence": "" },
+        { "text": "No qualifying questions are asked (proceeds autonomously)", "passed": null, "evidence": "" },
+        { "text": "Draft is structured with the six Blueprint sections", "passed": null, "evidence": "" },
+        { "text": "Output includes a quality scorecard with five 1-5 scores", "passed": null, "evidence": "" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a prompt for our sales outreach.",
+      "expected_output": "Detects blocking gaps (objective, audience, stakes) and asks 2-3 batched qualifying questions, each with concrete options and a recommended default, BEFORE drafting.",
+      "files": [],
+      "assertions": [
+        { "text": "Asks qualifying questions before producing a final draft", "passed": null, "evidence": "" },
+        { "text": "Each question offers concrete options including a recommended default", "passed": null, "evidence": "" },
+        { "text": "Asks no more than ~4 questions and none are compound", "passed": null, "evidence": "" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write a prompt to classify support tickets into Billing, Bug, or Other. JSON output. Target a GPT-class model. Internal use only.",
+      "expected_output": "Fully specified request → proceeds with near-zero assumptions and no blocking questions; output is a classification-style blueprinted prompt with JSON Desired Output and an Evaluation section.",
+      "files": [],
+      "assertions": [
+        { "text": "Proceeds without asking blocking questions (request is fully specified)", "passed": null, "evidence": "" },
+        { "text": "Desired Output specifies a JSON shape", "passed": null, "evidence": "" },
+        { "text": "Includes an Evaluation section with pass criteria and test inputs", "passed": null, "evidence": "" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Make this prompt cheaper without losing behavior: <a long, verbose, repetitive prompt>.",
+      "expected_output": "Reduces token usage, notes the savings, warns if near a context window, and the quality scorecard's token-efficiency axis reflects the improvement.",
+      "files": [],
+      "assertions": [
+        { "text": "Produces a tightened prompt shorter than the input", "passed": null, "evidence": "" },
+        { "text": "Mentions token/context considerations", "passed": null, "evidence": "" },
+        { "text": "Includes a quality scorecard", "passed": null, "evidence": "" }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Convert this Claude Code agent into a Cursor rule: <paste a Claude agent .md>.",
+      "expected_output": "Produces a valid Cursor .mdc with description/globs/alwaysApply frontmatter, preserving intent; references the conversion checklist for required fields.",
+      "files": [],
+      "assertions": [
+        { "text": "Output is a .mdc-style rule with description, globs, and alwaysApply frontmatter", "passed": null, "evidence": "" },
+        { "text": "Preserves the original agent's intent and instructions", "passed": null, "evidence": "" }
+      ]
+    }
+  ]
+}
