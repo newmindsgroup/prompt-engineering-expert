@@ -23,11 +23,18 @@ function Ensure-Dir($d) { if ($DryRun) { Say "  (dry-run) mkdir $d" } else { New
 function Copy-It($src, $dst) { if ($DryRun) { Say "  (dry-run) copy $src -> $dst" } else { Copy-Item -Force -Path $src -Destination $dst } }
 
 function Install-Skill($skillsDir) {
-  Ensure-Dir (Join-Path $skillsDir "$Name\references")
-  Copy-It (Join-Path $Root "skills\$Name\SKILL.md") (Join-Path $skillsDir "$Name\SKILL.md")
-  Copy-It (Join-Path $Root "skills\$Name\references\blueprint.md") (Join-Path $skillsDir "$Name\references\blueprint.md")
-  Copy-It (Join-Path $Root "skills\$Name\references\model-guide.md") (Join-Path $skillsDir "$Name\references\model-guide.md")
-  Say "  [ok] skill -> $skillsDir\$Name\"
+  $dest = Join-Path $skillsDir $Name
+  Ensure-Dir $dest
+  Copy-It (Join-Path $Root "skills\$Name\SKILL.md") (Join-Path $dest "SKILL.md")
+  # Copy the entire references tree so new files (templates, checklists, etc.)
+  # are always included — never hardcode individual reference filenames.
+  $refDst = Join-Path $dest "references"
+  if ($DryRun) { Say "  (dry-run) copy skills\$Name\references\ -> $refDst (recursive)" }
+  else {
+    if (Test-Path $refDst) { Remove-Item -Recurse -Force $refDst }
+    Copy-Item -Recurse -Force -Path (Join-Path $Root "skills\$Name\references") -Destination $refDst
+  }
+  Say "  [ok] skill -> $dest\"
 }
 
 Say "Installing $Name ..."
