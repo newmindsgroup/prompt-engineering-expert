@@ -1,0 +1,20 @@
+[
+  { "query": "help me write a prompt that pulls the renewal date and plan tier out of these messy subscription emails", "should_trigger": true },
+  { "query": "can you improve my customer-support system prompt? it keeps being too formal and ignores the refund policy", "should_trigger": true },
+  { "query": "i have a custom GPT instruction blob, turn it into a Claude Code subagent please", "should_trigger": true },
+  { "query": "this prompt keeps giving me inconsistent JSON, help me figure out why and fix it", "should_trigger": true },
+  { "query": "my agent prompt is like 4k tokens, trim it down without changing what it does", "should_trigger": true },
+  { "query": "write me a reusable template for an LLM-as-judge grading prompt", "should_trigger": true },
+  { "query": "make a Cursor rule that enforces our prompt-writing standards across the repo", "should_trigger": true },
+  { "query": "i need a system prompt for a triage bot that routes tickets to the right team", "should_trigger": true },
+  { "query": "what's the difference between an AGENTS.md and a CLAUDE.md and how should i word ours", "should_trigger": true },
+  { "query": "refactor this python function to be faster, it's doing too many list comprehensions", "should_trigger": false },
+  { "query": "what's the capital of Australia", "should_trigger": false },
+  { "query": "write me a blog post about prompt engineering best practices for our marketing site", "should_trigger": false },
+  { "query": "summarize this 30-page PDF contract for me", "should_trigger": false },
+  { "query": "debug why my React component re-renders twice on mount", "should_trigger": false },
+  { "query": "set up a GitHub Action that runs my test suite on every push", "should_trigger": false },
+  { "query": "translate this paragraph into Spanish", "should_trigger": false },
+  { "query": "explain how transformers work, i'm trying to learn the attention mechanism", "should_trigger": false },
+  { "query": "draft a LinkedIn post announcing our new pricing", "should_trigger": false }
+]
