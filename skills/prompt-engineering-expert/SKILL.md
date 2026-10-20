@@ -3,7 +3,7 @@ name: prompt-engineering-expert
 description: "Designs, improves, converts, debugs, and operationalizes prompts, system instructions, agent definitions, and reusable AI-agent behavior. Works autonomously by default: reads the project, infers intent, and produces a finished prompt with stated assumptions in one pass; runs a guided one-question-at-a-time interactive mode on request. Use when the user is writing or refining a prompt, a system prompt, GPT/agent instructions, an AGENTS.md or CLAUDE.md, a Cursor rule, or asks to make a prompt better, convert a prompt between platforms, debug poor prompt output, or cut a prompt's token usage. Triggers on: 'write a prompt', 'improve this prompt', 'prompt for', 'system prompt', 'agent instructions', 'convert this prompt', 'why is this prompt failing', 'reduce tokens', 'prompt engineering'."
 license: MIT
 metadata:
-  version: '1.2.0'
+  version: '1.3.0'
   author: New Minds Group
 ---
 
@@ -83,7 +83,8 @@ Structure every drafted prompt against these six sections unless the target
 platform requires a different structure. Full detail and worked examples:
 `references/blueprint.md`. When a request matches a common archetype (extraction,
 classification, agent system prompt, RAG, code-gen, eval rubric, multi-step
-chain), start from `references/templates/`. Before finalizing, scan the draft
+chain, design generation for image, video or UI-build tools), start from
+`references/templates/`. Before finalizing, scan the draft
 against `references/anti-patterns.md` and fix any smells.
 
 1. Role / Persona

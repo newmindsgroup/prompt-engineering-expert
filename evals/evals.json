@@ -55,6 +55,17 @@
         { "text": "Output is a .mdc-style rule with description, globs, and alwaysApply frontmatter", "passed": null, "evidence": "" },
         { "text": "Preserves the original agent's intent and instructions", "passed": null, "evidence": "" }
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "Write a Midjourney prompt for the homepage hero of a premium coffee roaster. Approved direction: warm editorial, palette #F6F2EA 60%, #2B1D14 30%, #C8643B 10%, morning side light, negative space top-left for a headline, 16:9. Avoid steam swirls and latte-art cliches.",
+      "expected_output": "Uses the design-generation template: subject first, composition with negative space, the hex palette and proportions, light, 16:9 set with the tool's own parameter, an avoid list with the stated cliches, no text in the image, and checks against the direction.",
+      "files": [],
+      "assertions": [
+        { "text": "Prompt keeps the given hex values or their proportions and the 16:9 ratio", "passed": null, "evidence": "" },
+        { "text": "Includes an avoid list with the stated cliches and keeps text out of the image", "passed": null, "evidence": "" },
+        { "text": "Gives checks to judge the generated image against the direction", "passed": null, "evidence": "" }
+      ]
     }
   ]
 }

@@ -45,7 +45,7 @@ if ((Get-Command claude -ErrorAction SilentlyContinue) -or (Test-Path "$HOME\.cl
   Say "* Claude Code detected"
   Install-Skill "$HOME\.claude\skills"
   Ensure-Dir "$HOME\.claude\agents"; Ensure-Dir "$HOME\.claude\commands"
-  Copy-It (Join-Path $Root "claude-code\agents\$Name.md") "$HOME\.claude\agents\$Name.md"
+  Copy-It (Join-Path $Root "agents\$Name.md") "$HOME\.claude\agents\$Name.md"
   if ($DryRun) { Say "  (dry-run) copy claude-code\commands\*.md -> ~\.claude\commands\" }
   else { Copy-Item -Force -Path (Join-Path $Root "claude-code\commands\*.md") -Destination "$HOME\.claude\commands\" }
   Say "  [ok] agent + commands (/$Name, /pe)"

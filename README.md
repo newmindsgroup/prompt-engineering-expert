@@ -26,7 +26,8 @@ single-source and never drifts.
 
 ```
 skills/prompt-engineering-expert/SKILL.md   ← the canon (edit here only)
-├── claude-code/  agent + slash commands (/prompt-engineering-expert, /pe)
+├── agents/       Claude Code sub-agent
+├── claude-code/  slash commands (/prompt-engineering-expert, /pe)
 ├── codex/        ~/.codex/prompts slash command
 ├── cursor/       .cursor/rules/*.mdc  (generated)
 ├── antigravity/  instruction file     (generated)
@@ -128,7 +129,8 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 | Path | What |
 |------|------|
 | `skills/prompt-engineering-expert/` | The canonical Agent Skill — the single source of truth. |
-| `claude-code/` | Claude Code sub-agent + slash commands (`/prompt-engineering-expert`, `/pe`). |
+| `agents/` | Claude Code sub-agent (standard plugin location, so `/plugin install` loads it). |
+| `claude-code/` | Claude Code slash commands (`/prompt-engineering-expert`, `/pe`). |
 | `codex/` | Codex on-demand prompts (`/prompt-engineering-expert`, `/pe`). |
 | `cursor/` | Generated `.cursor/rules` rule. |
 | `antigravity/` | Generated instruction file for Antigravity / Gemini CLI. |

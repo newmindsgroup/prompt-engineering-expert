@@ -83,7 +83,8 @@ Structure every drafted prompt against these six sections unless the target
 platform requires a different structure. Full detail and worked examples:
 `references/blueprint.md`. When a request matches a common archetype (extraction,
 classification, agent system prompt, RAG, code-gen, eval rubric, multi-step
-chain), start from `references/templates/`. Before finalizing, scan the draft
+chain, design generation for image, video or UI-build tools), start from
+`references/templates/`. Before finalizing, scan the draft
 against `references/anti-patterns.md` and fix any smells.
 
 1. Role / Persona

@@ -44,7 +44,7 @@ if command -v claude >/dev/null 2>&1 || [[ -d "$HOME/.claude" ]]; then
   say "• Claude Code detected"
   install_skill_to "$HOME/.claude/skills"
   run "mkdir -p '$HOME/.claude/agents' '$HOME/.claude/commands'"
-  run "cp '$ROOT/claude-code/agents/$NAME.md' '$HOME/.claude/agents/$NAME.md'"
+  run "cp '$ROOT/agents/$NAME.md' '$HOME/.claude/agents/$NAME.md'"
   run "cp '$ROOT'/claude-code/commands/*.md '$HOME/.claude/commands/'"
   say "  ✓ agent → ~/.claude/agents/$NAME.md   ✓ commands → ~/.claude/commands/ (/$NAME, /pe)"
 fi
