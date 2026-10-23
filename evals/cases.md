@@ -27,3 +27,4 @@ Version-Timestamp: 2026-06-19
 |---|-------|----------|
 | Q1 | "write a prompt to grade essays 1–5" | output uses the Blueprint, includes Desired Output + Evaluation, shows a quality scorecard, no anti-patterns (has output format + test inputs) |
 | Q2 | "make this prompt cheaper: <long verbose prompt>" | reduces tokens, warns if near a window, scorecard shows improved token axis |
+| Q3 | "write a Midjourney prompt for our hero image" with an approved direction (hex palette, light, 16:9, cliches to avoid) | uses the design-generation template: subject first, palette and proportions kept, ratio via tool parameter, avoid list, no text in image, evaluation against the direction |
