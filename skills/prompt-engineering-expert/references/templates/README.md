@@ -15,3 +15,4 @@ instead of from blank, then tailor.
 | `evaluation-rubric.md` | judge another model's output |
 | `multi-step-chain.md` | decompose a large task into a token-budgeted chain |
 | `design-generation.md` | drive an image, video or UI-build tool from an approved design direction |
+| `gauntlet-loop.md` | make an agent loop builder + blind critic until the work beats a named, real reference |

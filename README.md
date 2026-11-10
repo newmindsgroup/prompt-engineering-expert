@@ -141,3 +141,7 @@ Restart the IDE/CLI session afterward so it picks up the new skill.
 ## License
 
 MIT © New Minds Group. See [LICENSE](LICENSE).
+
+## Third-party credits
+
+- `skills/prompt-engineering-expert/references/templates/gauntlet-loop.md` is adapted from [RoboNuggets' gauntlet-loop skill](https://github.com/robonuggets/gauntlet-loop) by Jay E (commit 9b1975a), licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The gauntlet loop technique is [Matt Shumer's](https://github.com/mshumer/Claude-of-Duty). Changes: reworded throughout, added a copy guard, hard gates (accessibility, brand, licensing, accuracy) before the blind comparison, a default cost ceiling for paid work, and agent-neutral closing lines. That file remains under CC BY 4.0; the rest of this repo is MIT.

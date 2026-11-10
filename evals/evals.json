@@ -66,6 +66,17 @@
         { "text": "Includes an avoid list with the stated cliches and keeps text out of the image", "passed": null, "evidence": "" },
         { "text": "Gives checks to judge the generated image against the direction", "passed": null, "evidence": "" }
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Write me a gauntlet loop prompt so my agent builds a pricing page for my B2B SaaS that beats the best in class.",
+      "expected_output": "Asks for or offers 2-3 named, fetchable bars before writing; the final prompt names one bar, runs builder and fresh-context critic pairs with a blind binary comparison, puts accessibility/brand/licensing gates before the comparison, counts resemblance against ours, and exits on a blind win or a cost ceiling, not a round count.",
+      "files": [],
+      "assertions": [
+        { "text": "Offers 2-3 specific named bars (not categories) or asks for one before writing the prompt", "passed": null, "evidence": "" },
+        { "text": "Prompt includes hard gates and a copy guard before the blind comparison", "passed": null, "evidence": "" },
+        { "text": "Exit is a blind win or a ceiling, never a fixed round count", "passed": null, "evidence": "" }
+      ]
     }
   ]
 }
